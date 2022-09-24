@@ -6,8 +6,6 @@ from praw.models import MoreComments
 from keys import *
 import json
 from datetime import datetime, tzinfo
-from dateutil import tz
-import pytz
 
 output = {}
 
@@ -55,7 +53,7 @@ for submission in reddit.subreddit(subred).top(time_filter="all", limit = 100):
 
 output['subreddit_info'] = dict_time
 
-print("Done")
+print("Done looking through subreddit posts")
 #This finds all the users in the subreddit and adds them to the dictionary
 #if they are less than three months old
 users = {}
@@ -74,5 +72,5 @@ json_object = json.dumps(output, indent=4)
 #Putting into json file
 with open('./reddit-subreddit-scraper/output.json', 'w') as f:
     f.write(json_object)
-    print("New json file is created from data.json file")
+    print("New json file is created using ouput dictionary")
     
